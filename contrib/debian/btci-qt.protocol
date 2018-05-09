@@ -1,0 +1,11 @@
+[Protocol]
+exec=btci-qt '%u'
+protocol=btci
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false
