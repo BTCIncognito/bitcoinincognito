@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2018 The BTCi developers
+// Copyright (c) 2017-2018 The XBI developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -91,12 +91,12 @@ Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool txDe
 
     result.push_back(Pair("moneysupply",ValueFromAmount(blockindex->nMoneySupply)));
 
-    Object zbtciObj;
+    Object zxbiObj;
     for (auto denom : libzerocoin::zerocoinDenomList) {
-        zbtciObj.push_back(Pair(to_string(denom), ValueFromAmount(blockindex->mapZerocoinSupply.at(denom) * (denom*COIN))));
+        zxbiObj.push_back(Pair(to_string(denom), ValueFromAmount(blockindex->mapZerocoinSupply.at(denom) * (denom*COIN))));
     }
-    zbtciObj.emplace_back(Pair("total", ValueFromAmount(blockindex->GetZerocoinSupply())));
-    result.emplace_back(Pair("zBTCisupply", zbtciObj));
+    zxbiObj.emplace_back(Pair("total", ValueFromAmount(blockindex->GetZerocoinSupply())));
+    result.emplace_back(Pair("zXBIsupply", zxbiObj));
 
     return result;
 }
@@ -176,7 +176,7 @@ Value getrawmempool(const Array& params, bool fHelp)
             "{                           (json object)\n"
             "  \"transactionid\" : {       (json object)\n"
             "    \"size\" : n,             (numeric) transaction size in bytes\n"
-            "    \"fee\" : n,              (numeric) transaction fee in btci\n"
+            "    \"fee\" : n,              (numeric) transaction fee in xbi\n"
             "    \"time\" : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT\n"
             "    \"height\" : n,           (numeric) block height when transaction entered pool\n"
             "    \"startingpriority\" : n, (numeric) priority when transaction entered pool\n"
@@ -279,17 +279,17 @@ Value getblock(const Array& params, bool fHelp)
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"nextblockhash\" : \"hash\"       (string) The hash of the next block\n"
             "  \"moneysupply\" : \"supply\"       (numeric) The money supply when this block was added to the blockchain\n"
-            "  \"zBTCisupply\" :\n"
+            "  \"zXBIsupply\" :\n"
             "  {\n"
-            "     \"1\" : n,            (numeric) supply of 1 zBTCi denomination\n"
-            "     \"5\" : n,            (numeric) supply of 5 zBTCi denomination\n"
-            "     \"10\" : n,           (numeric) supply of 10 zBTCi denomination\n"
-            "     \"50\" : n,           (numeric) supply of 50 zBTCi denomination\n"
-            "     \"100\" : n,          (numeric) supply of 100 zBTCi denomination\n"
-            "     \"500\" : n,          (numeric) supply of 500 zBTCi denomination\n"
-            "     \"1000\" : n,         (numeric) supply of 1000 zBTCi denomination\n"
-            "     \"5000\" : n,         (numeric) supply of 5000 zBTCi denomination\n"
-            "     \"total\" : n,        (numeric) The total supply of all zBTCi denominations\n"
+            "     \"1\" : n,            (numeric) supply of 1 zXBI denomination\n"
+            "     \"5\" : n,            (numeric) supply of 5 zXBI denomination\n"
+            "     \"10\" : n,           (numeric) supply of 10 zXBI denomination\n"
+            "     \"50\" : n,           (numeric) supply of 50 zXBI denomination\n"
+            "     \"100\" : n,          (numeric) supply of 100 zXBI denomination\n"
+            "     \"500\" : n,          (numeric) supply of 500 zXBI denomination\n"
+            "     \"1000\" : n,         (numeric) supply of 1000 zXBI denomination\n"
+            "     \"5000\" : n,         (numeric) supply of 5000 zXBI denomination\n"
+            "     \"total\" : n,        (numeric) The total supply of all zXBI denominations\n"
             "  }\n"
             "}\n"
             "\nResult (for verbose=false):\n"
@@ -429,8 +429,8 @@ Value gettxout(const Array& params, bool fHelp)
             "     \"hex\" : \"hex\",        (string) \n"
             "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
             "     \"type\" : \"pubkeyhash\", (string) The type, eg pubkeyhash\n"
-            "     \"addresses\" : [          (array of string) array of btci addresses\n"
-            "     \"btciaddress\"   	 	(string) btci address\n"
+            "     \"addresses\" : [          (array of string) array of xbi addresses\n"
+            "     \"xbiaddress\"   	 	(string) xbi address\n"
             "        ,...\n"
             "     ]\n"
             "  },\n"

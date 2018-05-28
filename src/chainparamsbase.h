@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between btci-cli and btcid)
- * of a given instance of the BTCi system.
+ * CBaseChainParams defines the base parameters (shared between xbi-cli and xbid)
+ * of a given instance of the XBI system.
  */
 class CBaseChainParams
 {

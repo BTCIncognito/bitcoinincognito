@@ -17,7 +17,7 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The BTCi Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The XBI Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>BTCi-Qt</string>
+  <string>XBI-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>io.btci.BTCi-Qt</string>
+  <string>io.xbi.XBI-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +40,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.btci.BTCiPayment</string>
+      <string>io.xbi.XBIPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>btci</string>
+        <string>xbi</string>
       </array>
     </dict>
   </array>
@@ -52,9 +52,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.btci.paymentrequest</string>
+      <string>io.xbi.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>BTCi payment request</string>
+      <string>XBI payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -62,10 +62,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-btci-payment-request</string>
+        <string>application/x-xbi-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>btcipaymentrequest</string>
+          <string>xbipaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -78,7 +78,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.btci.paymentrequest</string>
+        <string>io.xbi.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

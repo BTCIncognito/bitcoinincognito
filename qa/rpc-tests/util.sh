@@ -2,7 +2,7 @@
 # Copyright (c) 2014 The Bitcoin Core developers
 # Copyright (c) 2014-2015 The Dash developers
 # Copyright (c) 2015-2017 The PIVX developers
-# Copyright (c) 2017 The BTCi developers
+# Copyright (c) 2017 The XBI developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,7 +14,7 @@ function echoerr {
 
 # Usage: ExtractKey <key> "<json_object_string>"
 # Warning: this will only work for the very-well-behaved
-# JSON produced by btcid, do NOT use it to try to
+# JSON produced by xbid, do NOT use it to try to
 # parse arbitrary/nested/etc JSON.
 function ExtractKey {
     echo $2 | tr -d ' "{}\n' | awk -v RS=',' -F: "\$1 ~ /$1/ { print \$2}"
@@ -23,7 +23,7 @@ function ExtractKey {
 function CreateDataDir {
   DIR=$1
   mkdir -p $DIR
-  CONF=$DIR/btci.conf
+  CONF=$DIR/xbi.conf
   echo "regtest=1" >> $CONF
   echo "keypool=2" >> $CONF
   echo "rpcuser=rt" >> $CONF
@@ -90,8 +90,8 @@ function CreateTxn1 {
   TXID=$(Unspent $1 $2 txid)
   AMOUNT=$(Unspent $1 $2 amount)
   VOUT=$(Unspent $1 $2 vout)
-  RAWTBTCi=$( $CLI $1 createrawtransaction "[{\"txid\":\"$TXID\",\"vout\":$VOUT}]" "{\"$3\":$AMOUNT}")
-  ExtractKey hex "$( $CLI $1 signrawtransaction $RAWTBTCi )"
+  RAWTXBI=$( $CLI $1 createrawtransaction "[{\"txid\":\"$TXID\",\"vout\":$VOUT}]" "{\"$3\":$AMOUNT}")
+  ExtractKey hex "$( $CLI $1 signrawtransaction $RAWTXBI )"
 }
 
 # Use: SendRawTxn <datadir> <hex_txn_data>

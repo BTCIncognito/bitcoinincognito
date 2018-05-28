@@ -239,10 +239,10 @@ public:
     std::string addrName;
     CService addrLocal;
     int nVersion;
-    // strSubVer is whatever byte array we read from the btci. However, this field is intended
+    // strSubVer is whatever byte array we read from the xbi. However, this field is intended
     // to be printed out, displayed to humans in various forms and so on. So we sanitize it and
     // store the sanitized version in cleanSubVer. The original should be used when dealing with
-    // the network or btci types and the cleaned string used when displayed or logged.
+    // the network or xbi types and the cleaned string used when displayed or logged.
     std::string strSubVer, cleanSubVer;
     bool fWhitelisted; // This peer can bypass DoS banning.
     bool fOneShot;

@@ -19,18 +19,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(BTCi);
-    unitlist.append(mBTCi);
-    unitlist.append(uBTCi);
+    unitlist.append(XBI);
+    unitlist.append(mXBI);
+    unitlist.append(uXBI);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case BTCi:
-    case mBTCi:
-    case uBTCi:
+    case XBI:
+    case mXBI:
+    case uXBI:
         return true;
     default:
         return false;
@@ -40,12 +40,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case BTCi:
-        return QString("btci");
-    case mBTCi:
-        return QString("mbtci");
-    case uBTCi:
-        return QString::fromUtf8("ubtci");
+    case XBI:
+        return QString("xbi");
+    case mXBI:
+        return QString("mxbi");
+    case uXBI:
+        return QString::fromUtf8("uxbi");
     default:
         return QString("???");
     }
@@ -55,23 +55,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case BTCi:
-            return QString("BTCi");
-        case mBTCi:
-            return QString("mBTCi");
-        case uBTCi:
-            return QString::fromUtf8("μBTCi");
+        case XBI:
+            return QString("XBI");
+        case mXBI:
+            return QString("mXBI");
+        case uXBI:
+            return QString::fromUtf8("μXBI");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case BTCi:
-            return QString("tBTCi");
-        case mBTCi:
-            return QString("mtBTCi");
-        case uBTCi:
-            return QString::fromUtf8("μtBTCi");
+        case XBI:
+            return QString("tXBI");
+        case mXBI:
+            return QString("mtXBI");
+        case uXBI:
+            return QString::fromUtf8("μtXBI");
         default:
             return QString("???");
         }
@@ -82,23 +82,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case BTCi:
-            return QString("BTCi");
-        case mBTCi:
-            return QString("Milli-BTCi (1 / 1" THIN_SP_UTF8 "000)");
-        case uBTCi:
-            return QString("Micro-BTCi (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case XBI:
+            return QString("XBI");
+        case mXBI:
+            return QString("Milli-XBI (1 / 1" THIN_SP_UTF8 "000)");
+        case uXBI:
+            return QString("Micro-XBI (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case BTCi:
-            return QString("TestBTCis");
-        case mBTCi:
-            return QString("Milli-TestBTCi (1 / 1" THIN_SP_UTF8 "000)");
-        case uBTCi:
-            return QString("Micro-TestBTCi (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case XBI:
+            return QString("TestXBIs");
+        case mXBI:
+            return QString("Milli-TestXBI (1 / 1" THIN_SP_UTF8 "000)");
+        case uXBI:
+            return QString("Micro-TestXBI (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -108,11 +108,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case BTCi:
+    case XBI:
         return 100000000;
-    case mBTCi:
+    case mXBI:
         return 100000;
-    case uBTCi:
+    case uXBI:
         return 100;
     default:
         return 100000000;
@@ -122,11 +122,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case BTCi:
+    case XBI:
         return 8;
-    case mBTCi:
+    case mXBI:
         return 5;
-    case uBTCi:
+    case uXBI:
         return 2;
     default:
         return 0;

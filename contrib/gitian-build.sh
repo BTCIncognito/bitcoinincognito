@@ -17,7 +17,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/btciproject/btci
+url=https://github.com/xbiproject/xbi
 proc=2
 mem=2000
 lxc=true
@@ -31,7 +31,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the btci, gitian-builder, gitian.sigs, and btci-detached-sigs.
+Run this script from the directory containing the xbi, gitian-builder, gitian.sigs, and xbi-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -39,7 +39,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/btciproject/btci
+-u|--url	Specify the URL of the repository. Default is https://github.com/xbiproject/xbi
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -237,8 +237,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/btciproject/gitian.sigs.git
-    git clone https://github.com/btciproject/btci-detached-sigs.git
+    git clone https://github.com/xbiproject/gitian.sigs.git
+    git clone https://github.com/xbiproject/xbi-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -252,7 +252,7 @@ then
 fi
 
 # Set up build
-pushd ./btci
+pushd ./xbi
 git fetch
 git checkout ${COMMIT}
 popd
@@ -261,7 +261,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./btci-binaries/${VERSION}
+	mkdir -p ./xbi-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -271,7 +271,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../btci/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../xbi/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -279,9 +279,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit btci=${COMMIT} --url btci=${url} ../btci/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../btci/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/btci-*.tar.gz build/out/src/btci-*.tar.gz ../btci-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit xbi=${COMMIT} --url xbi=${url} ../xbi/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../xbi/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/xbi-*.tar.gz build/out/src/xbi-*.tar.gz ../xbi-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -289,10 +289,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit btci=${COMMIT} --url btci=${url} ../btci/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../btci/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/btci-*-win-unsigned.tar.gz inputs/btci-win-unsigned.tar.gz
-	    mv build/out/btci-*.zip build/out/btci-*.exe ../btci-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit xbi=${COMMIT} --url xbi=${url} ../xbi/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../xbi/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/xbi-*-win-unsigned.tar.gz inputs/xbi-win-unsigned.tar.gz
+	    mv build/out/xbi-*.zip build/out/xbi-*.exe ../xbi-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -300,10 +300,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit btci=${COMMIT} --url btci=${url} ../btci/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../btci/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/btci-*-osx-unsigned.tar.gz inputs/btci-osx-unsigned.tar.gz
-	    mv build/out/btci-*.tar.gz build/out/btci-*.dmg ../btci-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit xbi=${COMMIT} --url xbi=${url} ../xbi/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../xbi/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/xbi-*-osx-unsigned.tar.gz inputs/xbi-osx-unsigned.tar.gz
+	    mv build/out/xbi-*.tar.gz build/out/xbi-*.dmg ../xbi-binaries/${VERSION}
 	fi
 	# AArch64
 	if [[ $aarch64 = true ]]
@@ -311,9 +311,9 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} AArch64"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit btci=${COMMIT} --url btci=${url} ../btci/contrib/gitian-descriptors/gitian-aarch64.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../btci/contrib/gitian-descriptors/gitian-aarch64.yml
-	    mv build/out/btci-*.tar.gz build/out/src/btci-*.tar.gz ../btci-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit xbi=${COMMIT} --url xbi=${url} ../xbi/contrib/gitian-descriptors/gitian-aarch64.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../xbi/contrib/gitian-descriptors/gitian-aarch64.yml
+	    mv build/out/xbi-*.tar.gz build/out/src/xbi-*.tar.gz ../xbi-binaries/${VERSION}
 	popd
 
         if [[ $commitFiles = true ]]
@@ -340,32 +340,32 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../btci/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../xbi/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../btci/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../xbi/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../btci/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../xbi/contrib/gitian-descriptors/gitian-osx.yml
 	# AArch64
 	echo ""
 	echo "Verifying v${VERSION} AArch64"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../btci/contrib/gitian-descriptors/gitian-aarch64.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../xbi/contrib/gitian-descriptors/gitian-aarch64.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../btci/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../xbi/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../btci/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../xbi/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -380,10 +380,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../btci/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../btci/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/btci-*win64-setup.exe ../btci-binaries/${VERSION}
-	    mv build/out/btci-*win32-setup.exe ../btci-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../xbi/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../xbi/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/xbi-*win64-setup.exe ../xbi-binaries/${VERSION}
+	    mv build/out/xbi-*win32-setup.exe ../xbi-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -391,9 +391,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../btci/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../btci/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/btci-osx-signed.dmg ../btci-binaries/${VERSION}/btci-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../xbi/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../xbi/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/xbi-osx-signed.dmg ../xbi-binaries/${VERSION}/xbi-${VERSION}-osx.dmg
 	fi
 	popd
 

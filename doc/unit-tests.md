@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with 'make check'.
 
-To run the btcid tests manually, launch src/test/test_btci .
+To run the xbid tests manually, launch src/test/test_xbi .
 
-To add more btcid tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more xbid tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the test/ directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the btci-qt tests manually, launch src/qt/test/btci-qt_test
+To run the xbi-qt tests manually, launch src/qt/test/xbi-qt_test
 
-To add more btci-qt tests, add them to the `src/qt/test/` directory and
+To add more xbi-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

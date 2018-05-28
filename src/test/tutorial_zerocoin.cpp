@@ -212,7 +212,7 @@ ZerocoinTutorial()
         libzerocoin::CoinSpend spend(params, newCoin, accumulator, 0, witness, 0);//(0) - Presstab
 
 		// This is a sanity check. The CoinSpend object should always verify,
-		// but why not check before we put it onto the btci?
+		// but why not check before we put it onto the xbi?
 		if (!spend.Verify(accumulator)) {
 			cout << "ERROR: Our new CoinSpend transaction did not verify!" << endl;
 			return false;

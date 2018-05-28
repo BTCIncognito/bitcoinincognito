@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Colin Perbtcial, 2011 ArtForz, 2012-2013 pooler
+ * Copyright 2009 Colin Perxbial, 2011 ArtForz, 2012-2013 pooler
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,7 +23,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * This file was originally written by Colin Perbtcial as part of the Tarsnap
+ * This file was originally written by Colin Perxbial as part of the Tarsnap
  * online backup system.
  */
 

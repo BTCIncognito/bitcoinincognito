@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/btci-config.h"
+#include "config/xbi-config.h"
 #endif
 
 #include "optionsmodel.h"
@@ -61,7 +61,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BitcoinUnits::BTCi);
+        settings.setValue("nDisplayUnit", BitcoinUnits::XBI);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("strThirdPartyTxUrls"))
@@ -79,10 +79,10 @@ void OptionsModel::Init()
         settings.setValue("nZeromintPercentage", 10);
     nZeromintPercentage = settings.value("nZeromintPercentage").toLongLong();
 
-    if (!settings.contains("nAnonymizeBTCiAmount"))
-        settings.setValue("nAnonymizeBTCiAmount", 1000);
+    if (!settings.contains("nAnonymizeXBIAmount"))
+        settings.setValue("nAnonymizeXBIAmount", 1000);
 
-    nAnonymizeBTCiAmount = settings.value("nAnonymizeBTCiAmount").toLongLong();
+    nAnonymizeXBIAmount = settings.value("nAnonymizeXBIAmount").toLongLong();
 
     if (!settings.contains("fShowMasternodesTab"))
         settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
@@ -151,8 +151,8 @@ void OptionsModel::Init()
         SoftSetArg("-zeromintpercentage", settings.value("nZeromintPercentage").toString().toStdString());
     if (settings.contains("nPreferredDenom"))
         SoftSetArg("-preferredDenom", settings.value("nPreferredDenom").toString().toStdString());
-    if (settings.contains("nAnonymizeBTCiAmount"))
-        SoftSetArg("-anonymizebtciamount", settings.value("nAnonymizeBTCiAmount").toString().toStdString());
+    if (settings.contains("nAnonymizeXBIAmount"))
+        SoftSetArg("-anonymizexbiamount", settings.value("nAnonymizeXBIAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }
@@ -163,7 +163,7 @@ void OptionsModel::Reset()
 
     // Remove all entries from our QSettings object
     settings.clear();
-    resetSettings = true; // Needed in btci.cpp during shotdown to also remove the window positions
+    resetSettings = true; // Needed in xbi.cpp during shotdown to also remove the window positions
 
     // default setting for OptionsModel::StartAtStartup - disabled
     if (GUIUtil::GetStartOnSystemStartup())
@@ -234,8 +234,8 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
             return QVariant(nZeromintPercentage);
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
-        case AnonymizeBTCiAmount:
-            return QVariant(nAnonymizeBTCiAmount);
+        case AnonymizeXBIAmount:
+            return QVariant(nAnonymizeXBIAmount);
         case Listen:
             return settings.value("fListen");
         default:
@@ -350,10 +350,10 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             emit preferredDenomChanged(nPreferredDenom);
             break;
 
-        case AnonymizeBTCiAmount:
-            nAnonymizeBTCiAmount = value.toInt();
-            settings.setValue("nAnonymizeBTCiAmount", nAnonymizeBTCiAmount);
-            emit anonymizeBTCiAmountChanged(nAnonymizeBTCiAmount);
+        case AnonymizeXBIAmount:
+            nAnonymizeXBIAmount = value.toInt();
+            settings.setValue("nAnonymizeXBIAmount", nAnonymizeXBIAmount);
+            emit anonymizeXBIAmountChanged(nAnonymizeXBIAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();

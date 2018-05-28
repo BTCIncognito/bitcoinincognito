@@ -12,7 +12,7 @@
 #include "spork.h"
 
 //
-// Bootup the Masternode, look for a 1500 BTCi input and register on the network
+// Bootup the Masternode, look for a 1500 XBI input and register on the network
 //
 void CActiveMasternode::ManageStatus()
 {

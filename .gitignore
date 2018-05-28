@@ -6,12 +6,12 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/btci
-src/btcid
-src/btci-cli
-src/btci-tx
-src/test/test_btci
-src/qt/test/test_btci-qt
+src/xbi
+src/xbid
+src/xbi-cli
+src/xbi-tx
+src/test/test_xbi
+src/qt/test/test_xbi-qt
 
 # autoreconf
 Makefile.in
@@ -37,8 +37,8 @@ confdefs.h
 conftest.cpp
 conftest.err
 libtool
-src/config/btci-config.h
-src/config/btci-config.h.in
+src/config/xbi-config.h
+src/config/xbi-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -63,7 +63,7 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
-.btci
+.xbi
 *.a
 *.pb.cc
 *.pb.h
@@ -82,12 +82,12 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-btci-qt
-btci-Qt.app
+xbi-qt
+xbi-Qt.app
 
 # Unit-tests
 Makefile.test
-btci-qt_test
+xbi-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -103,7 +103,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_btci.coverage/
+test_xbi.coverage/
 total.coverage/
 coverage_percent.txt
 

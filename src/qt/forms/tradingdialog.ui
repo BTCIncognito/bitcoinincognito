@@ -181,7 +181,7 @@
       <string>Asks</string>
      </property>
     </widget>
-    <widget class="QLabel" name="BTCiSupply">
+    <widget class="QLabel" name="XBISupply">
      <property name="geometry">
       <rect>
        <x>540</x>
@@ -197,7 +197,7 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="BTCiDemand">
+    <widget class="QLabel" name="XBIDemand">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -432,7 +432,7 @@
     <attribute name="title">
      <string>Buy</string>
     </attribute>
-    <widget class="QPushButton" name="BuyBTCi">
+    <widget class="QPushButton" name="BuyXBI">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -442,10 +442,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Buy BTCi</string>
+      <string>Buy XBI</string>
      </property>
      <property name="icon">
-      <iconset resource="../btci.qrc">
+      <iconset resource="../xbi.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -512,7 +512,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>BTCi</string>
+      <string>XBI</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -1704,10 +1704,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>BTCi</string>
+      <string>XBI</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="UnitsInputBTCi">
+    <widget class="QLineEdit" name="UnitsInputXBI">
      <property name="geometry">
       <rect>
        <x>310</x>
@@ -1741,7 +1741,7 @@
       </font>
      </property>
     </widget>
-    <widget class="QPushButton" name="SellBTCiBTN">
+    <widget class="QPushButton" name="SellXBIBTN">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1751,10 +1751,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Sell BTCi</string>
+      <string>Sell XBI</string>
      </property>
      <property name="icon">
-      <iconset resource="../btci">
+      <iconset resource="../xbi">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -1777,12 +1777,12 @@
          </font>
         </property>
         <property name="text">
-         <string>BTCi Available:</string>
+         <string>XBI Available:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="BTCiAvailableLabel">
+       <widget class="QLabel" name="XBIAvailableLabel">
         <property name="palette">
          <palette>
           <active>
@@ -2213,7 +2213,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="labelBTCi">
+       <widget class="QLabel" name="labelXBI">
         <property name="font">
          <font>
           <weight>75</weight>
@@ -2221,7 +2221,7 @@
          </font>
         </property>
         <property name="text">
-         <string>BTCi</string>
+         <string>XBI</string>
         </property>
        </widget>
       </item>
@@ -2733,7 +2733,7 @@
       <string>TextLabel</string>
      </property>
     </widget>
-    <widget class="QLabel" name="BTCiBalanceLabel">
+    <widget class="QLabel" name="XBIBalanceLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2762,7 +2762,7 @@
       </font>
      </property>
      <property name="text">
-      <string>BTCi Balance:</string>
+      <string>XBI Balance:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">
@@ -2784,7 +2784,7 @@
       <string>BTC Balance:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="BTCiAvailableLabel_2">
+    <widget class="QLabel" name="XBIAvailableLabel_2">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2813,7 +2813,7 @@
       </font>
      </property>
      <property name="text">
-      <string>BTCi Available:</string>
+      <string>XBI Available:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_14">
@@ -2832,10 +2832,10 @@
       </font>
      </property>
      <property name="text">
-      <string>BTCi Pending:</string>
+      <string>XBI Pending:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="BTCiPendingLabel">
+    <widget class="QLabel" name="XBIPendingLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2928,7 +2928,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Bittrex BTCi Deposit Address:</string>
+      <string>Bittrex XBI Deposit Address:</string>
      </property>
     </widget>
     <widget class="QPushButton" name="GenDepositBTN">
@@ -2941,10 +2941,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Generate BTCi Deposit Address</string>
+      <string>Generate XBI Deposit Address</string>
      </property>
      <property name="icon">
-      <iconset resource="../btci.qrc">
+      <iconset resource="../xbi.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3155,7 +3155,7 @@
        <string notr="true">border: 1px solid #61696c;margin-left:4px;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnConvertBTCi">
+     <widget class="QPushButton" name="btnConvertXBI">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -3206,7 +3206,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../btci.qrc">:/icons/transaction_1</pixmap>
+       <pixmap resource="../xbi.qrc">:/icons/transaction_1</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -3253,7 +3253,7 @@
       <string>Update API Keys</string>
      </property>
      <property name="icon">
-      <iconset resource="../btci.qrc">
+      <iconset resource="../xbi.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3408,7 +3408,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="../btci.qrc"/>
+  <include location="../xbi.qrc"/>
  </resources>
  <connections/>
 </ui>

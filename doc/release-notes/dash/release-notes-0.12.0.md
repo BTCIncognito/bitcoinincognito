@@ -100,4 +100,4 @@ AlexMomo
 snogcel
 bertlebbert
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/btci-project/btci-project-translations).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/xbi-project/xbi-project-translations).

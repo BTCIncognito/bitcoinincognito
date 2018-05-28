@@ -11,9 +11,9 @@
 static const int MODEL_UPDATE_DELAY = 250;
 
 /* AskPassphraseDialog -- Maximum passphrase length */
-static const int MAX_PASSBTCiASE_SIZE = 1024;
+static const int MAX_PASSXBIASE_SIZE = 1024;
 
-/* BTCi GUI -- Size of icons in status bar */
+/* XBI GUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -48,9 +48,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "BTCi"
-#define QAPP_ORG_DOMAIN "btci.org"
-#define QAPP_APP_NAME_DEFAULT "BTCi-Qt"
-#define QAPP_APP_NAME_TESTNET "BTCi-Qt-testnet"
+#define QAPP_ORG_NAME "XBI"
+#define QAPP_ORG_DOMAIN "xbi.org"
+#define QAPP_APP_NAME_DEFAULT "XBI-Qt"
+#define QAPP_APP_NAME_TESTNET "XBI-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H

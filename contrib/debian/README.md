@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package btcid/btci-qt
-for Debian-based Linux systems. If you compile btcid/btci-qt yourself, there are some useful files here.
+This directory contains files used to package xbid/xbi-qt
+for Debian-based Linux systems. If you compile xbid/xbi-qt yourself, there are some useful files here.
 
-## btci: URI support ##
+## xbi: URI support ##
 
 
-btci-qt.desktop  (Gnome / Open Desktop)
+xbi-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install btci-qt.desktop
+	sudo desktop-file-install xbi-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your btciqt binary to `/usr/bin`
-and the `../../share/pixmaps/btci128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your xbiqt binary to `/usr/bin`
+and the `../../share/pixmaps/xbi128.png` to `/usr/share/pixmaps`
 
-btci-qt.protocol (KDE)
+xbi-qt.protocol (KDE)
 

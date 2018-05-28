@@ -31,7 +31,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
        <item>
-        <widget class="QLabel" name="zBTCiLabel">
+        <widget class="QLabel" name="zXBILabel">
          <property name="minimumSize">
           <size>
            <width>460</width>
@@ -52,13 +52,13 @@
           </font>
          </property>
          <property name="toolTip">
-          <string>BTCi which were anonymized via Zerocin Protocol</string>
+          <string>XBI which were anonymized via Zerocin Protocol</string>
          </property>
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>Zerocoin BTCi (zBTCi)</string>
+          <string>Zerocoin XBI (zXBI)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -74,7 +74,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="QLabel" name="labelzBTCiActions">
+                <widget class="QLabel" name="labelzXBIActions">
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
@@ -83,7 +83,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>zBTCi Actions:</string>
+                  <string>zXBI Actions:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -91,9 +91,9 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCiSyncStatus">
+                <widget class="QLabel" name="labelzXBISyncStatus">
                  <property name="toolTip">
-                  <string>The displayed information may be out of date. Your wallet automatically synchronizes with the BTCi network after a connection is established, but this process has not completed yet.</string>
+                  <string>The displayed information may be out of date. Your wallet automatically synchronizes with the XBI network after a connection is established, but this process has not completed yet.</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLabel { color: red; }</string>
@@ -137,7 +137,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
                <item>
-                <widget class="QPushButton" name="pushButtonMintzBTCi">
+                <widget class="QPushButton" name="pushButtonMintzXBI">
                  <property name="minimumSize">
                   <size>
                    <width>131</width>
@@ -145,10 +145,10 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Enter an amount of BTCi to convert (mint) to zBTCi</string>
+                  <string>Enter an amount of XBI to convert (mint) to zXBI</string>
                  </property>
                  <property name="text">
-                  <string>Mint BTCi to zBTCi</string>
+                  <string>Mint XBI to zXBI</string>
                  </property>
                 </widget>
                </item>
@@ -169,16 +169,16 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCi_2">
+                <widget class="QLabel" name="labelzXBI_2">
                  <property name="text">
-                  <string>zBTCi</string>
+                  <string>zXBI</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCiAmountText">
+                <widget class="QLabel" name="labelzXBIAmountText">
                  <property name="toolTip">
-                  <string>Available Balance are coins (BTCi) which are confirmed and not locked or Masternode collaterals.</string>
+                  <string>Available Balance are coins (XBI) which are confirmed and not locked or Masternode collaterals.</string>
                  </property>
                  <property name="text">
                   <string>Available Balance:</string>
@@ -189,12 +189,12 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCiAmountValue">
+                <widget class="QLabel" name="labelzXBIAmountValue">
                  <property name="toolTip">
-                  <string>Enter an amount of BTCi to convert to zBTCi</string>
+                  <string>Enter an amount of XBI to convert to zXBI</string>
                  </property>
                  <property name="text">
-                  <string>0.000 000 00 BTCi</string>
+                  <string>0.000 000 00 XBI</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -223,7 +223,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Reset Zerocoin (zBTCi) Wallet DB. Deletes transactions that did not make it into the blockchain.</string>
+                  <string>Reset Zerocoin (zXBI) Wallet DB. Deletes transactions that did not make it into the blockchain.</string>
                  </property>
                  <property name="text">
                   <string>Reset</string>
@@ -370,7 +370,7 @@
                     <enum>Qt::ActionsContextMenu</enum>
                    </property>
                    <property name="text">
-                    <string notr="true">0.00 BTCi</string>
+                    <string notr="true">0.00 XBI</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -474,21 +474,21 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QPushButton" name="pushButtonZBTCiControl">
+                <widget class="QPushButton" name="pushButtonZXBIControl">
                  <property name="text">
-                  <string>zBTCi Control</string>
+                  <string>zXBI Control</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCiSelected">
+                <widget class="QLabel" name="labelzXBISelected">
                  <property name="text">
-                  <string>zBTCi Selected:</string>
+                  <string>zXBI Selected:</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCiSelected_int">
+                <widget class="QLabel" name="labelzXBISelected_int">
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -542,7 +542,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_6">
                <item>
-                <widget class="QPushButton" name="pushButtonSpendzBTCi">
+                <widget class="QPushButton" name="pushButtonSpendzXBI">
                  <property name="minimumSize">
                   <size>
                    <width>131</width>
@@ -550,17 +550,17 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Send zBTCi. Without 'Pay To:' address creates payments to yourself.</string>
+                  <string>Send zXBI. Without 'Pay To:' address creates payments to yourself.</string>
                  </property>
                  <property name="text">
-                  <string>Send zBTCi</string>
+                  <string>Send zXBI</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCiBalanceText">
+                <widget class="QLabel" name="labelzXBIBalanceText">
                  <property name="toolTip">
-                  <string>Available (mature and spendable) zBTCi for spending</string>
+                  <string>Available (mature and spendable) zXBI for spending</string>
                  </property>
                  <property name="text">
                   <string>Available Balance:</string>
@@ -579,12 +579,12 @@
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Available (mature and spendable) zBTCi for spending
+                  <string>Available (mature and spendable) zXBI for spending
 
-zBTCi are mature when they have more than 20 confirmations AND more than 1 mints of the same denomination after them were minted</string>
+zXBI are mature when they have more than 20 confirmations AND more than 1 mints of the same denomination after them were minted</string>
                  </property>
                  <property name="text">
-                  <string>0 zBTCi</string>
+                  <string>0 zXBI</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -607,7 +607,7 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                <item>
                 <widget class="QLabel" name="labelSecurityLevel">
                  <property name="toolTip">
-                  <string>Security Level for Zerocoin (zBTCi) Transactions. More is better, but needs more time and resources.</string>
+                  <string>Security Level for Zerocoin (zXBI) Transactions. More is better, but needs more time and resources.</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -695,7 +695,7 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>The BTCi address to send the payment to. Creates local payment to yourself when empty.</string>
+                    <string>The XBI address to send the payment to. Creates local payment to yourself when empty.</string>
                    </property>
                   </widget>
                  </item>
@@ -708,7 +708,7 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../btci.qrc">
+                    <iconset resource="../xbi.qrc">
                      <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
                    </property>
                    <property name="shortcut">
@@ -725,7 +725,7 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../btci.qrc">
+                    <iconset resource="../xbi.qrc">
                      <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
                    </property>
                    <property name="shortcut">
@@ -784,15 +784,15 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
                  <property name="buddy">
-                  <cstring>zBTCipayAmount</cstring>
+                  <cstring>zXBIpayAmount</cstring>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="zBTCipayAmount"/>
+                <widget class="QLineEdit" name="zXBIpayAmount"/>
                </item>
                <item>
-                <widget class="QLabel" name="labelzBTCi">
+                <widget class="QLabel" name="labelzXBI">
                  <property name="minimumSize">
                   <size>
                    <width>55</width>
@@ -800,7 +800,7 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                   </size>
                  </property>
                  <property name="text">
-                  <string>zBTCi</string>
+                  <string>zXBI</string>
                  </property>
                 </widget>
                </item>
@@ -833,7 +833,7 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                   <enum>Qt::LeftToRight</enum>
                  </property>
                  <property name="text">
-                  <string>Convert Change Back to zBTCi (might cost additional fees)</string>
+                  <string>Convert Change Back to zXBI (might cost additional fees)</string>
                  </property>
                 </widget>
                </item>
@@ -886,7 +886,7 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_21">
                <item>
-                <widget class="QLabel" name="labelzBTCiStats">
+                <widget class="QLabel" name="labelzXBIStats">
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
@@ -895,10 +895,10 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Information about the available zBTCi funds.</string>
+                  <string>Information about the available zXBI funds.</string>
                  </property>
                  <property name="text">
-                  <string>zBTCi Stats:</string>
+                  <string>zXBI Stats:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -960,10 +960,10 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Total Balance including unconfirmed and immature zBTCi</string>
+                  <string>Total Balance including unconfirmed and immature zXBI</string>
                  </property>
                  <property name="text">
-                  <string>Total zBTCi Balance:</string>
+                  <string>Total zXBI Balance:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -998,10 +998,10 @@ zBTCi are mature when they have more than 20 confirmations AND more than 1 mints
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Total Balance including unconfirmed and immature zBTCi</string>
+                  <string>Total Balance including unconfirmed and immature zXBI</string>
                  </property>
                  <property name="text">
-                  <string>0 zBTCi</string>
+                  <string>0 zXBI</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1576,7 +1576,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 BTCi</string>
+         <string notr="true">0.000 000 00 XBI</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -1650,7 +1650,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
            <enum>Qt::ActionsContextMenu</enum>
           </property>
           <property name="text">
-           <string notr="true">0.00 BTCi</string>
+           <string notr="true">0.00 XBI</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -1847,7 +1847,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 BTCi</string>
+         <string notr="true">0.000 000 00 XBI</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -2192,7 +2192,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../btci.qrc"/>
+  <include location="../xbi.qrc"/>
  </resources>
  <connections/>
 </ui>

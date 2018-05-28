@@ -1,39 +1,39 @@
-BTCi Core
+XBI Core
 =====================
 
 Setup
 ---------------------
-[BTCi Core](http://BTCicoin.com) is the original BTCi client and it builds the backbone of the network. However, it downloads and stores the entire history of BTCi transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[XBI Core](http://XBIcoin.com) is the original XBI client and it builds the backbone of the network. However, it downloads and stores the entire history of XBI transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
-The following are some helpful notes on how to run BTCi on your native platform.
+The following are some helpful notes on how to run XBI on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- bin/32/btci-qt (GUI, 32-bit) or bin/32/btcid (headless, 32-bit)
-- bin/64/btci-qt (GUI, 64-bit) or bin/64/btcid (headless, 64-bit)
+- bin/32/xbi-qt (GUI, 32-bit) or bin/32/xbid (headless, 32-bit)
+- bin/64/xbi-qt (GUI, 64-bit) or bin/64/xbid (headless, 64-bit)
 
 ### Windows
 
-Unpack the files into a directory, and then run btci-qt.exe.
+Unpack the files into a directory, and then run xbi-qt.exe.
 
 ### OSX
 
-Drag BTCi-Qt to your applications folder, and then run BTCi-Qt.
+Drag XBI-Qt to your applications folder, and then run XBI-Qt.
 
 ### Need Help?
 
-* See the documentation at the [BTCi Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
+* See the documentation at the [XBI Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
 for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php) or on the [BTCi Forum](http://BTCicoin.com/).
-* Join one of our Discord groups [BTCi Discord Groups](https://discord.gg/YcnvMqt).
+* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php) or on the [XBI Forum](http://XBIcoin.com/).
+* Join one of our Discord groups [XBI Discord Groups](https://discord.gg/YcnvMqt).
 
 Building
 ---------------------
-The following are developer notes on how to build BTCi on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build XBI on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OSX Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -41,7 +41,7 @@ The following are developer notes on how to build BTCi on your native platform. 
 
 Development
 ---------------------
-The BTCi repo's [root README](https://github.com/eastcoastcrypto/BTCi/blob/master/README.md) contains relevant information on the development process and automated testing.
+The XBI repo's [root README](https://github.com/eastcoastcrypto/XBI/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
@@ -56,7 +56,7 @@ The BTCi repo's [root README](https://github.com/eastcoastcrypto/BTCi/blob/maste
 ### Resources
 
 * Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) .
-* Join the [BTCi-Dev] Discord groups [BTCi Discord Groups](https://discord.gg/YcnvMqt).
+* Join the [XBI-Dev] Discord groups [XBI Discord Groups](https://discord.gg/YcnvMqt).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

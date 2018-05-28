@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BTCi_CSPORKDB_H
-#define BTCi_CSPORKDB_H
+#ifndef XBI_CSPORKDB_H
+#define XBI_CSPORKDB_H
 
 #include <boost/filesystem/path.hpp>
 #include "leveldbwrapper.h"
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif //BTCi_CSPORKDB_H
+#endif //XBI_CSPORKDB_H

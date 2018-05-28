@@ -14,7 +14,7 @@
 #include "sendcoinsentry.h"
 #include "walletmodel.h"
 #include "coincontrol.h"
-#include "zbtcicontroldialog.h"
+#include "zxbicontroldialog.h"
 #include "spork.h"
 
 #include <QClipboard>
@@ -30,14 +30,14 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
     nDisplayUnit = 0; // just make sure it's not unitialized
     ui->setupUi(this);
 
-    // "Spending 999999 zBTCi ought to be enough for anybody." - Bill Gates, 2017
-    ui->zBTCipayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
+    // "Spending 999999 zXBI ought to be enough for anybody." - Bill Gates, 2017
+    ui->zXBIpayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
     ui->labelMintAmountValue->setValidator( new QIntValidator(0, 999999, this) );
 
     // Default texts for (mini-) coincontrol
     ui->labelCoinControlQuantity->setText (tr("Coins automatically selected"));
     ui->labelCoinControlAmount->setText (tr("Coins automatically selected"));
-    ui->labelzBTCiSyncStatus->setText("(" + tr("out of sync") + ")");
+    ui->labelzXBISyncStatus->setText("(" + tr("out of sync") + ")");
 
     // Sunken frame for minting messages
     ui->TEMintStatus->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
@@ -66,7 +66,7 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
     ui->labelzDenom7Text->setText("Denom. with value <b>1000</b>:");
     ui->labelzDenom8Text->setText("Denom. with value <b>5000</b>:");
 
-    // BTCi settings
+    // XBI settings
     QSettings settings;
     if (!settings.contains("nSecurityLevel")){
         nSecurityLevel = 42;
@@ -94,11 +94,11 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
 
     //temporary disable for maintenance
     if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
-        ui->pushButtonMintzBTCi->setEnabled(false);
-        ui->pushButtonMintzBTCi->setToolTip(tr("zBTCi is currently disabled due to maintenance."));
+        ui->pushButtonMintzXBI->setEnabled(false);
+        ui->pushButtonMintzXBI->setToolTip(tr("zXBI is currently disabled due to maintenance."));
 
-        ui->pushButtonSpendzBTCi->setEnabled(false);
-        ui->pushButtonSpendzBTCi->setToolTip(tr("zBTCi is currently disabled due to maintenance."));
+        ui->pushButtonSpendzXBI->setEnabled(false);
+        ui->pushButtonSpendzXBI->setToolTip(tr("zXBI is currently disabled due to maintenance."));
     }
 }
 
@@ -137,18 +137,18 @@ void PrivacyDialog::on_addressBookButton_clicked()
     dlg.setModel(walletModel->getAddressTableModel());
     if (dlg.exec()) {
         ui->payTo->setText(dlg.getReturnValue());
-        ui->zBTCipayAmount->setFocus();
+        ui->zXBIpayAmount->setFocus();
     }
 }
 
-void PrivacyDialog::on_pushButtonMintzBTCi_clicked()
+void PrivacyDialog::on_pushButtonMintzXBI_clicked()
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
 
     if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
         QMessageBox::information(this, tr("Mint Zerocoin"),
-                                 tr("zBTCi is currently undergoing maintenance."), QMessageBox::Ok,
+                                 tr("zXBI is currently undergoing maintenance."), QMessageBox::Ok,
                                  QMessageBox::Ok);
         return;
     }
@@ -176,7 +176,7 @@ void PrivacyDialog::on_pushButtonMintzBTCi_clicked()
         return;
     }
 
-    ui->TEMintStatus->setPlainText(tr("Minting ") + ui->labelMintAmountValue->text() + " zBTCi...");
+    ui->TEMintStatus->setPlainText(tr("Minting ") + ui->labelMintAmountValue->text() + " zXBI...");
     ui->TEMintStatus->repaint ();
 
     int64_t nTime = GetTimeMillis();
@@ -194,7 +194,7 @@ void PrivacyDialog::on_pushButtonMintzBTCi_clicked()
     double fDuration = (double)(GetTimeMillis() - nTime)/1000.0;
 
     // Minting successfully finished. Show some stats for entertainment.
-    QString strStatsHeader = tr("Successfully minted ") + ui->labelMintAmountValue->text() + tr(" zBTCi in ") +
+    QString strStatsHeader = tr("Successfully minted ") + ui->labelMintAmountValue->text() + tr(" zXBI in ") +
                              QString::number(fDuration) + tr(" sec. Used denominations:\n");
 
     // Clear amount to avoid double spending when accidentally clicking twice
@@ -253,7 +253,7 @@ void PrivacyDialog::on_pushButtonSpentReset_clicked()
     return;
 }
 
-void PrivacyDialog::on_pushButtonSpendzBTCi_clicked()
+void PrivacyDialog::on_pushButtonSpendzXBI_clicked()
 {
 
     if (!walletModel || !walletModel->getOptionsModel() || !pwalletMain)
@@ -261,7 +261,7 @@ void PrivacyDialog::on_pushButtonSpendzBTCi_clicked()
 
     if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
         QMessageBox::information(this, tr("Mint Zerocoin"),
-                                 tr("zBTCi is currently undergoing maintenance."), QMessageBox::Ok, QMessageBox::Ok);
+                                 tr("zXBI is currently undergoing maintenance."), QMessageBox::Ok, QMessageBox::Ok);
         return;
     }
 
@@ -273,24 +273,24 @@ void PrivacyDialog::on_pushButtonSpendzBTCi_clicked()
             // Unlock wallet was cancelled
             return;
         }
-        // Wallet is unlocked now, sedn zBTCi
-        sendzBTCi();
+        // Wallet is unlocked now, sedn zXBI
+        sendzXBI();
         return;
     }
-    // Wallet already unlocked or not encrypted at all, send zBTCi
-    sendzBTCi();
+    // Wallet already unlocked or not encrypted at all, send zXBI
+    sendzXBI();
 }
 
-void PrivacyDialog::on_pushButtonZBTCiControl_clicked()
+void PrivacyDialog::on_pushButtonZXBIControl_clicked()
 {
-    ZBTCiControlDialog* zBTCiControl = new ZBTCiControlDialog(this);
-    zBTCiControl->setModel(walletModel);
-    zBTCiControl->exec();
+    ZXBIControlDialog* zXBIControl = new ZXBIControlDialog(this);
+    zXBIControl->setModel(walletModel);
+    zXBIControl->exec();
 }
 
-void PrivacyDialog::setZBTCiControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setZXBIControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzBTCiSelected_int->setText(QString::number(nAmount));
+    ui->labelzXBISelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -299,7 +299,7 @@ static inline int64_t roundint64(double d)
     return (int64_t)(d > 0 ? d + 0.5 : d - 0.5);
 }
 
-void PrivacyDialog::sendzBTCi()
+void PrivacyDialog::sendzXBI()
 {
     QSettings settings;
 
@@ -310,31 +310,31 @@ void PrivacyDialog::sendzBTCi()
     }
     else{
         if (!address.IsValid()) {
-            QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid BTCi Address"), QMessageBox::Ok, QMessageBox::Ok);
+            QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid XBI Address"), QMessageBox::Ok, QMessageBox::Ok);
             ui->payTo->setFocus();
             return;
         }
     }
 
     // Double is allowed now
-    double dAmount = ui->zBTCipayAmount->text().toDouble();
+    double dAmount = ui->zXBIpayAmount->text().toDouble();
     CAmount nAmount = roundint64(dAmount* COIN);
 
     // Check amount validity
     if (!MoneyRange(nAmount) || nAmount <= 0.0) {
         QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid Send Amount"), QMessageBox::Ok, QMessageBox::Ok);
-        ui->zBTCipayAmount->setFocus();
+        ui->zXBIpayAmount->setFocus();
         return;
     }
 
-    // Convert change to zBTCi
+    // Convert change to zXBI
     bool fMintChange = ui->checkBoxMintChange->isChecked();
 
     // Persist minimize change setting
     fMinimizeChange = ui->checkBoxMinimizeChange->isChecked();
     settings.setValue("fMinimizeChange", fMinimizeChange);
 
-    // Warn for additional fees if amount is not an integer and change as zBTCi is requested
+    // Warn for additional fees if amount is not an integer and change as zXBI is requested
     bool fWholeNumber = floor(dAmount) == dAmount;
     double dzFee = 0.0;
 
@@ -343,7 +343,7 @@ void PrivacyDialog::sendzBTCi()
 
     if(!fWholeNumber && fMintChange){
         QString strFeeWarning = "You've entered an amount with fractional digits and want the change to be converted to Zerocoin.<br /><br /><b>";
-        strFeeWarning += QString::number(dzFee, 'f', 8) + " BTCi </b>will be added to the standard transaction fees!<br />";
+        strFeeWarning += QString::number(dzFee, 'f', 8) + " XBI </b>will be added to the standard transaction fees!<br />";
         QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm additional Fees"),
             strFeeWarning,
             QMessageBox::Yes | QMessageBox::Cancel,
@@ -351,7 +351,7 @@ void PrivacyDialog::sendzBTCi()
 
         if (retval != QMessageBox::Yes) {
             // Sending canceled
-            ui->zBTCipayAmount->setFocus();
+            ui->zXBIpayAmount->setFocus();
             return;
         }
     }
@@ -370,7 +370,7 @@ void PrivacyDialog::sendzBTCi()
 
     // General info
     QString strQuestionString = tr("Are you sure you want to send?<br /><br />");
-    QString strAmount = "<b>" + QString::number(dAmount, 'f', 8) + " zBTCi</b>";
+    QString strAmount = "<b>" + QString::number(dAmount, 'f', 8) + " zXBI</b>";
     QString strAddress = tr(" to address ") + QString::fromStdString(address.ToString()) + strAddressLabel + " <br />";
 
     if(ui->payTo->text().isEmpty()){
@@ -396,13 +396,13 @@ void PrivacyDialog::sendzBTCi()
     ui->TEMintStatus->setPlainText(tr("Spending Zerocoin.\nComputationally expensive, might need several minutes depending on the selected Security Level and your hardware. \nPlease be patient..."));
     ui->TEMintStatus->repaint();
 
-    // use mints from zBTCi selector if applicable
+    // use mints from zXBI selector if applicable
     vector<CZerocoinMint> vMintsSelected;
-    if (!ZBTCiControlDialog::listSelectedMints.empty()) {
-        vMintsSelected = ZBTCiControlDialog::GetSelectedMints();
+    if (!ZXBIControlDialog::listSelectedMints.empty()) {
+        vMintsSelected = ZXBIControlDialog::GetSelectedMints();
     }
 
-    // Spend zBTCi
+    // Spend zXBI
     CWalletTx wtxNew;
     CZerocoinSpendReceipt receipt;
     bool fSuccess = false;
@@ -418,7 +418,7 @@ void PrivacyDialog::sendzBTCi()
     // Display errors during spend
     if (!fSuccess) {
         int nNeededSpends = receipt.GetNeededSpends(); // Number of spends we would need for this transaction
-        const int nMaxSpends = Params().Zerocoin_MaxSpendsPerTransaction(); // Maximum possible spends for one zBTCi transaction
+        const int nMaxSpends = Params().Zerocoin_MaxSpendsPerTransaction(); // Maximum possible spends for one zXBI transaction
         if (nNeededSpends > nMaxSpends) {
             QString strStatusMessage = tr("Too much inputs (") + QString::number(nNeededSpends, 10) + tr(") needed. \nMaximum allowed: ") + QString::number(nMaxSpends, 10);
             strStatusMessage += tr("\nEither mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.");
@@ -429,20 +429,20 @@ void PrivacyDialog::sendzBTCi()
             QMessageBox::warning(this, tr("Spend Zerocoin"), receipt.GetStatusMessage().c_str(), QMessageBox::Ok, QMessageBox::Ok);
             ui->TEMintStatus->setPlainText(tr("Spend Zerocoin failed with status = ") +QString::number(receipt.GetStatus(), 10) + "\n" + "Message: " + QString::fromStdString(receipt.GetStatusMessage()));
         }
-        ui->zBTCipayAmount->setFocus();
+        ui->zXBIpayAmount->setFocus();
         ui->TEMintStatus->repaint();
         return;
     }
 
-    // Clear zbtci selector in case it was used
-    ZBTCiControlDialog::listSelectedMints.clear();
+    // Clear zxbi selector in case it was used
+    ZXBIControlDialog::listSelectedMints.clear();
 
     // Some statistics for entertainment
     QString strStats = "";
     CAmount nValueIn = 0;
     int nCount = 0;
     for (CZerocoinSpend spend : receipt.GetSpends()) {
-        strStats += tr("zBTCi Spend #: ") + QString::number(nCount) + ", ";
+        strStats += tr("zXBI Spend #: ") + QString::number(nCount) + ", ";
         strStats += tr("denomination: ") + QString::number(spend.GetDenomination()) + ", ";
         strStats += tr("serial: ") + spend.GetSerial().ToString().c_str() + "\n";
         strStats += tr("Spend is 1 of : ") + QString::number(spend.GetMintCount()) + " mints in the accumulator\n";
@@ -451,13 +451,13 @@ void PrivacyDialog::sendzBTCi()
 
     CAmount nValueOut = 0;
     for (const CTxOut& txout: wtxNew.vout) {
-        strStats += tr("value out: ") + FormatMoney(txout.nValue).c_str() + " BTCi, ";
+        strStats += tr("value out: ") + FormatMoney(txout.nValue).c_str() + " XBI, ";
         nValueOut += txout.nValue;
 
         strStats += tr("address: ");
         CTxDestination dest;
         if(txout.scriptPubKey.IsZerocoinMint())
-            strStats += tr("zBTCi Mint");
+            strStats += tr("zXBI Mint");
         else if(ExtractDestination(txout.scriptPubKey, dest))
             strStats += tr(CBitcoinAddress(dest).ToString().c_str());
         strStats += "\n";
@@ -472,7 +472,7 @@ void PrivacyDialog::sendzBTCi()
     strReturn += strStats;
 
     // Clear amount to avoid double spending when accidentally clicking twice
-    ui->zBTCipayAmount->setText ("0");
+    ui->zXBIpayAmount->setText ("0");
 
     ui->TEMintStatus->setPlainText(strReturn);
     ui->TEMintStatus->repaint();
@@ -616,7 +616,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
 
         strDenomStats = strUnconfirmed + QString::number(mapDenomBalances.at(denom)) + " x " +
                         QString::number(nCoins) + " = <b>" +
-                        QString::number(nSumPerCoin) + " zBTCi </b>";
+                        QString::number(nSumPerCoin) + " zXBI </b>";
 
         switch (nCoins) {
             case libzerocoin::CoinDenomination::ZQ_ONE:
@@ -654,9 +654,9 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
         nLockedBalance = walletModel->getLockedBalance();
     }
 
-    ui->labelzAvailableAmount->setText(QString::number(zerocoinBalance/COIN) + QString(" zBTCi "));
-    ui->labelzAvailableAmount_2->setText(QString::number(matureZerocoinBalance/COIN) + QString(" zBTCi "));
-    ui->labelzBTCiAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzAvailableAmount->setText(QString::number(zerocoinBalance/COIN) + QString(" zXBI "));
+    ui->labelzAvailableAmount_2->setText(QString::number(matureZerocoinBalance/COIN) + QString(" zXBI "));
+    ui->labelzXBIAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
 }
 
 void PrivacyDialog::updateDisplayUnit()
@@ -672,7 +672,7 @@ void PrivacyDialog::updateDisplayUnit()
 
 void PrivacyDialog::showOutOfSyncWarning(bool fShow)
 {
-    ui->labelzBTCiSyncStatus->setVisible(fShow);
+    ui->labelzXBISyncStatus->setVisible(fShow);
 }
 
 void PrivacyDialog::keyPressEvent(QKeyEvent* event)

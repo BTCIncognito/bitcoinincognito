@@ -80,28 +80,28 @@ enum AvailableCoinsType {
     ALL_COINS = 1,
     ONLY_DENOMINATED = 2,
     ONLY_NOT10000IFMN = 3,
-    ONLY_NONDENOMINATED_NOT10000IFMN = 4, // ONLY_NONDENOMINATED and not 10000 BTCi at the same time
+    ONLY_NONDENOMINATED_NOT10000IFMN = 4, // ONLY_NONDENOMINATED and not 10000 XBI at the same time
     ONLY_10000 = 5,                        // find masternode outputs including locked ones (use with caution)
     STAKABLE_COINS = 6                          // UTXO's that are valid for staking
 };
 
-// Possible states for zBTCi send
+// Possible states for zXBI send
 enum ZerocoinSpendStatus {
-    ZBTCi_SPEND_OKAY = 0,                            // No error
-    ZBTCi_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
-    ZBTCi_WALLET_LOCKED = 2,                         // Wallet was locked
-    ZBTCi_COMMIT_FAILED = 3,                         // Commit failed, reset status
-    ZBTCi_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
-    ZBTCi_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
-    ZBTCi_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
-    ZBTCi_TRX_CREATE = 7,                            // Everything related to create the transaction
-    ZBTCi_TRX_CHANGE = 8,                            // Everything related to transaction change
-    ZBTCi_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
-    ZBTCi_INVALID_COIN = 10,                         // Selected mint coin is not valid
-    ZBTCi_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
-    ZBTCi_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
-    ZBTCi_BAD_SERIALIZATION = 13,                    // Transaction verification failed
-    ZBTCi_SPENT_USED_ZBTCi = 14                       // Coin has already been spend
+    ZXBI_SPEND_OKAY = 0,                            // No error
+    ZXBI_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
+    ZXBI_WALLET_LOCKED = 2,                         // Wallet was locked
+    ZXBI_COMMIT_FAILED = 3,                         // Commit failed, reset status
+    ZXBI_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
+    ZXBI_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
+    ZXBI_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
+    ZXBI_TRX_CREATE = 7,                            // Everything related to create the transaction
+    ZXBI_TRX_CHANGE = 8,                            // Everything related to transaction change
+    ZXBI_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
+    ZXBI_INVALID_COIN = 10,                         // Selected mint coin is not valid
+    ZXBI_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
+    ZXBI_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
+    ZXBI_BAD_SERIALIZATION = 13,                    // Transaction verification failed
+    ZXBI_SPENT_USED_ZXBI = 14                       // Coin has already been spend
 };
 
 struct CompactTallyItem {
@@ -206,7 +206,7 @@ public:
     std::string ResetMintZerocoin(bool fExtendedSearch);
     std::string ResetSpentZerocoin();
     void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored);
-    void ZBTCiBackupWallet();
+    void ZXBIBackupWallet();
 
     /** Zerocin entry changed.
     * @note called with lock cs_wallet held.
@@ -309,7 +309,7 @@ public:
         return fEnableZeromint;
     }
 
-    void setZBTCiAutoBackups(bool fEnabled)
+    void setZXBIAutoBackups(bool fEnabled)
     {
         fBackupMints = fEnabled;
     }

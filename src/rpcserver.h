@@ -96,7 +96,7 @@ public:
 };
 
 /**
- * BTCi RPC command dispatcher.
+ * XBI RPC command dispatcher.
  */
 class CRPCTable
 {
